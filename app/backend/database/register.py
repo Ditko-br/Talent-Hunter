@@ -1,14 +1,12 @@
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import Column, Integer, String
+from flask_login import UserMixin
 
 database = SQLAlchemy()
 
-# Class to register users
-class Register():
-    def __init__(self):
-        self.id = Column(Integer, primary_key=True)
-        self.username = Column(String(50), unique=True, nullable=False)
-        self.email = Column(String(120), unique=True, nullable=False)
-        self.password = Column(String(128), nullable=False)
-
+class RegisterUser(database.Model, UserMixin):
     __tablename__ = "users_registers"
+
+    id = database.Column(database.Integer, primary_key=True)
+    username = database.Column(database.String(50), unique=True, nullable=False)
+    email = database.Column(database.String(120), unique=True, nullable=False)
+    hashed_password = database.Column(database.String(128), nullable=False)
