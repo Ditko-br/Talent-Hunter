@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 from flask_login import login_required
 from app.backend.services.jobs_areas import Jobs
-from app.backend.services.nations import JobCountry
+from app.backend.services.country import JobCountry
 
 search_bp = Blueprint('search', __name__, url_prefix='/api/search')
 jobs_service = Jobs()
